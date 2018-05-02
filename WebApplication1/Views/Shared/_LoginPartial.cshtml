@@ -1,0 +1,37 @@
+﻿<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+@using WebApplication1.App_GlobalResources;
+@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+
+                @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            </li>
+            <li>@Html.ActionLink(chien_language.myGraph, "BalanceChart", "Bills", routeValues: null, htmlAttributes: new { id = "CreateBillLink" })</li>
+            <li>@Html.ActionLink(chien_language.mnuMyBills, "Index", "Bills", routeValues: null, htmlAttributes: new { id = "CreateBillLink" })</li>
+           @* <li>@Html.ActionLink("Add Bill", "Create", "Bills", routeValues: null, htmlAttributes: new { id = "CreateBillLink" })</li>*@
+            <li>@Html.ActionLink(chien_language.mnuMyRevenues, "Index", "Revenues", routeValues: null, htmlAttributes: new { id = "CreateRevenueLink" })</li>
+
+           @* <li>@Html.ActionLink("Add Revenue", "Create", "Revenues", routeValues: null, htmlAttributes: new { id = "CreateRevenueLink" })</li>*@
+
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        </ul>
+
+
+    }
+    
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink(chien_language.mnuRegister, "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink(chien_language.mnuLogin, "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+
+    </ul>
+}

@@ -1,0 +1,37 @@
+﻿@model WebApplication1.Models.Bill
+
+@{
+    ViewBag.Title = "BalanceChart";
+}
+<style>
+    .center {
+        margin: auto;
+        width: 60%;
+        //border: 3px solid #73AD21;
+        padding: 10px;
+    }
+</style>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load("current", { packages: ["corechart"] });
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Task', 'Bills and Revenues'],
+            ['Bills', @ViewBag.TotalBillsAmount + 0],
+            ['Revenues', @ViewBag.TotalRevenuesAmount + 0]
+
+        ]);
+
+        var options = {
+            title: 'Bills and Revenues',
+            is3D: true,
+            pieHole: 0.4,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options);
+    }
+</script>
+<div class="center" id="donutchart" style="width: 900px; height: 500px;"></div>
+

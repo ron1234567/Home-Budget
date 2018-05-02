@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    @model WebApplication1.Models.Bill
+
+    @{
+        ViewBag.Title = "BalanceChart";
+    }
+
+</head>
+<body>
+    <div id="chart_div" class="col-sm-1" style="width: 1100px; height: 600px;"></div>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <br />
+    <div class="row">
+
+       
+        <div class="col-sm-1">
+            <button type="button" id="showExpected" style="background-color:#f9e7e7; border: groove;
+    outline:none;">
+                <img src="~/Photos/show.png" /> <p style="font-family:Anton; color:#20438d">Show Prediction</p>
+            </button>
+        </div>
+        <div class="col-sm-2">
+            <button type="button" id="hideExpected" style="background-color:#f9e7e7; border: groove;
+    outline:none;">
+                <img src="~/Photos/hide.png" /> <p style="font-family:Anton; color:#20438d">Hide Prediction</p>
+            </button>
+        </div>
+
+    </div>
+
+
+    <script>
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawVisualization);
+        function drawVisualization() {
+            // Some raw data (not necessarily accurate)
+               var data = google.visualization.arrayToDataTable([
+                   ['Month', 'Electricity', 'Water', 'Property Tax', 'Rent', 'Car Insurance', 'Home Insurance', 'Vacation', 'Other'],
+                   ['2016/06',  @ViewBag.ElectricityAmount0616 + 0, @ViewBag.WaterAmount0616 + 0, @ViewBag.PropertyTaxAmount0616 + 0, @ViewBag.RentAmount0616 +0, @ViewBag.CarInsuranceAmount0616 + 0, @ViewBag.HomeInsuranceAmount0616 + 0,  @ViewBag.VacationAmount0616 + 0, @ViewBag.OtherAmount0616 + 0],
+                   ['2016/07',  @ViewBag.ElectricityAmount0716 + 0, @ViewBag.WaterAmount0716 + 0, @ViewBag.PropertyTaxAmount0716 + 0, @ViewBag.RentAmount0716 +0, @ViewBag.CarInsuranceAmount0716 + 0, @ViewBag.HomeInsuranceAmount0716 + 0,  @ViewBag.VacationAmount0716 + 0, @ViewBag.OtherAmount0716 + 0],
+                   ['2016/08',  @ViewBag.ElectricityAmount0816 + 0, @ViewBag.WaterAmount0816 + 0, @ViewBag.PropertyTaxAmount0816 + 0, @ViewBag.RentAmount0816 +0, @ViewBag.CarInsuranceAmount0816 + 0, @ViewBag.HomeInsuranceAmount0816 + 0,  @ViewBag.VacationAmount0816 + 0, @ViewBag.OtherAmount0816 + 0],
+                   ['2016/09',  @ViewBag.ElectricityAmount0916 + 0, @ViewBag.WaterAmount0916 + 0, @ViewBag.PropertyTaxAmount0916 + 0, @ViewBag.RentAmount0916 +0, @ViewBag.CarInsuranceAmount0916 + 0, @ViewBag.HomeInsuranceAmount0916 + 0,  @ViewBag.VacationAmount0916 + 0, @ViewBag.OtherAmount0916 + 0],
+                   ['2016/10',  @ViewBag.ElectricityAmount1016 + 0, @ViewBag.WaterAmount1016 + 0, @ViewBag.PropertyTaxAmount1016 + 0, @ViewBag.RentAmount1016 +0, @ViewBag.CarInsuranceAmount1016 + 0, @ViewBag.HomeInsuranceAmount1016 + 0,  @ViewBag.VacationAmount1016 + 0, @ViewBag.OtherAmount1016 + 0],
+                   ['2016/11',  @ViewBag.ElectricityAmount1116 + 0, @ViewBag.WaterAmount1116 + 0, @ViewBag.PropertyTaxAmount1116 + 0, @ViewBag.RentAmount1116 +0, @ViewBag.CarInsuranceAmount1116 + 0, @ViewBag.HomeInsuranceAmount1116 + 0,  @ViewBag.VacationAmount1116 + 0, @ViewBag.OtherAmount1116 + 0],
+                   ['2016/12',  @ViewBag.ElectricityAmount1216 + 0, @ViewBag.WaterAmount1216 + 0, @ViewBag.PropertyTaxAmount1216 + 0, @ViewBag.RentAmount1216 +0, @ViewBag.CarInsuranceAmount1216 + 0, @ViewBag.HomeInsuranceAmount1216 + 0,  @ViewBag.VacationAmount1216 + 0, @ViewBag.OtherAmount1216 + 0],
+                   ['2017/01',  @ViewBag.ElectricityAmount0117 + 0, @ViewBag.WaterAmount0117 + 0, @ViewBag.PropertyTaxAmount0117 + 0, @ViewBag.RentAmount0117 +0, @ViewBag.CarInsuranceAmount0117 + 0, @ViewBag.HomeInsuranceAmount0117 + 0,  @ViewBag.VacationAmount0117 + 0, @ViewBag.OtherAmount0117 + 0],
+                   ['2017/02',  @ViewBag.ElectricityAmount0217 + 0, @ViewBag.WaterAmount0217 + 0, @ViewBag.PropertyTaxAmount0217 + 0, @ViewBag.RentAmount0217 +0, @ViewBag.CarInsuranceAmount0217 + 0, @ViewBag.HomeInsuranceAmount0217 + 0,  @ViewBag.VacationAmount0217 + 0, @ViewBag.OtherAmount0217 + 0],
+                   ['2017/03',  @ViewBag.ElectricityAmount0317 + 0, @ViewBag.WaterAmount0317 + 0, @ViewBag.PropertyTaxAmount0317 + 0, @ViewBag.RentAmount0317 +0, @ViewBag.CarInsuranceAmount0317 + 0, @ViewBag.HomeInsuranceAmount0317 + 0,  @ViewBag.VacationAmount0317 + 0, @ViewBag.OtherAmount0317 + 0],
+                   ['2017/04',  @ViewBag.ElectricityAmount0417 + 0, @ViewBag.WaterAmount0417 + 0, @ViewBag.PropertyTaxAmount0417 + 0, @ViewBag.RentAmount0417 +0, @ViewBag.CarInsuranceAmount0417 + 0, @ViewBag.HomeInsuranceAmount0417 + 0,  @ViewBag.VacationAmount0417 + 0, @ViewBag.OtherAmount0417 + 0],
+                   ['2017/05',  @ViewBag.ElectricityAmount0517 + 0, @ViewBag.WaterAmount0517 + 0, @ViewBag.PropertyTaxAmount0517 + 0, @ViewBag.RentAmount0517 +0, @ViewBag.CarInsuranceAmount0517 + 0, @ViewBag.HomeInsuranceAmount0517 + 0,  @ViewBag.VacationAmount0517 + 0, @ViewBag.OtherAmount0517 + 0],
+                   ['2017/06 (Expected)', @ViewBag.Predictions1[0]+0, @ViewBag.Predictions1[1]+0, @ViewBag.Predictions1[2]+0, @ViewBag.Predictions1[3]+0, @ViewBag.Predictions1[4]+0, @ViewBag.Predictions1[5]+0, @ViewBag.Predictions1[7]+0, @ViewBag.Predictions1[6]+0],
+                   ['2017/07 (Expected)', @ViewBag.Predictions2[0]+0, @ViewBag.Predictions2[1]+0, @ViewBag.Predictions2[2]+0, @ViewBag.Predictions2[3]+0, @ViewBag.Predictions2[4]+0, @ViewBag.Predictions2[5]+0, 5994.356, @ViewBag.Predictions2[6]+0],
+      ]);
+
+               var options = {
+                title: 'Monthly Bills Amount',
+                titleTextStyle: {
+                    fontName: 'Anton', fontSize: 24, bold: false, color: '#20438d'
+                },
+                legend: {textStyle: {
+                    fontName: 'Anton', fontSize: 16, bold: false, color: '#20438d'
+                }
+                },
+                tooltip: {
+                    textStyle: {
+                        fontName: 'Anton', fontSize: 16, bold: false, color: '#20438d'
+                    }
+                },
+                seriesType: 'bars',               
+                focusTarget: 'category',
+                hAxis: {
+                    textStyle: {
+
+                        fontSize: 14,
+                        color: '#053061',
+                        bold: true,
+                        italic: false
+                    }
+                },
+                is3D: true,
+                bar: { groupWidth: 80 },
+                series: { 8: { type: 'line' } }
+               };
+
+            var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+            view = new google.visualization.DataView(data);
+            view.hideRows([12,13]);
+            chart.draw(view, options);
+
+
+            var hideExp = document.getElementById("hideExpected");
+            hideExp.onclick = function () {
+                view = new google.visualization.DataView(data);
+                view.hideRows([12,13]);
+                chart.draw(view, options);
+            }
+            var showExp = document.getElementById("showExpected");
+            showExp.onclick = function () {
+                view = new google.visualization.DataView(data);
+                chart.draw(view, options);
+            }
+        };
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+﻿@model WebApplication1.Models.Bill
+@{
+    ViewBag.Title = "PredictionBills";
+}
+<h4> The predictions for this month is: </h4>
+
+@*@{foreach (var prediction in ViewBag.Predictions1)
+    {
+       
+            @prediction
+        <br />
+    } }*@
+
+@ViewBag.Predictions1[0]
+<br />
+@ViewBag.Predictions1[1]
+<br />
+@ViewBag.Predictions1[2]
+<br />
+@ViewBag.Predictions1[3]
+<br />
+@ViewBag.Predictions1[4]
+<br />
+@ViewBag.Predictions1[5]
+<br />
+@ViewBag.Predictions1[6]
+<br />
+@*@ViewBag.Predictions1[7]
+<br />*@
+
+<h4> The predictions for the next month is: </h4>
+
+@ViewBag.Predictions2[0]
+<br />
+@ViewBag.Predictions2[1]
+<br />
+@ViewBag.Predictions2[2]
+<br />
+@ViewBag.Predictions2[3]
+<br />
+@ViewBag.Predictions2[4]
+<br />
+@ViewBag.Predictions2[5]
+<br />
+@ViewBag.Predictions2[6]
+<br />
+@*@ViewBag.Predictions2[7]
+<br />*@
